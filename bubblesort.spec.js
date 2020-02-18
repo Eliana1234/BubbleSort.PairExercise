@@ -1,4 +1,12 @@
-describe('Bubble Sort', function(){
+describe('Bubble Sort Swap', () => {
+
+  beforeAll(function () {
+        spyOn(window, 'swap').and.callThrough(); 
+    })
+
+ describe('Bubble Sort', function(){
+
+     const arr = [3, 4, 1, 2]
 
      it('handles an empty array', function(){
     expect( bubbleSort([]) ).toEqual( [] );
@@ -9,8 +17,16 @@ describe('Bubble Sort', function(){
   });
 
   it('it handles multiple elements', function(){
-    expect( bubbleSort([1,3,2]) ).toEqual( [1,2,3] );
+    expect( bubbleSort(arr) ).toEqual( [1, 2, 3, 4] );
   });
+
+  it('swap should not exceed array length', function () {
+    bubbleSort(arr);
+    expect(swap.calls.count()).toEqual(arr.length);
+  });
+
+});
+
 
 
 })
